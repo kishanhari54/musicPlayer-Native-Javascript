@@ -1,0 +1,2 @@
+# musicPlayer-Native-Javascript
+This is a music player created with basic html / css / js file.  with 3 approaches.  Approach 1: Simple one instance of audio player.  Approach 2:  Using functions prototype enabling multi audio player creations  . Approach 3:   Using Classes. for multiple instances.   This majorly use s the concept of event delegation. with font awesome library icons and some hardcoded list of songs.

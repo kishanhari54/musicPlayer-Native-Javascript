@@ -1,0 +1,269 @@
+/* General CSS */
+:root{
+    --headerHeight: 80px;
+    --font-size: 14px;
+    --maxWidth: 1500px;
+    --backgroundColor: rgba(156, 156, 156, .2);
+    --typeScale:1;
+    --h6Size:calc(16px * var(var(--typeScale)));
+
+}
+::-webkit-scrollbar {
+    width: 10px;
+   
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: gray; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(78, 78, 78); 
+  }
+body{
+    box-sizing: border-box;
+    max-width: var(--maxWidth);
+    margin:0 auto;
+    padding:0;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+
+ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+a.button{
+    display:block;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.videoPlayer{
+    max-width: var(--maxWidth);
+    min-height:100vh;
+    display:grid;
+    /* gap:.5em; */
+    grid-template-columns: 1fr 11fr;
+    grid-template-rows: 1.3fr 10.7fr;
+    grid-template-areas: 'header header'
+                        'sidebar mainContent';
+}
+
+.videoCard{
+    background:transparent;
+}
+
+.videoCard video, .videoCard iframe{
+    width:100%;
+    height:166px;
+    object-fit: cover;
+}
+.videoCard figure{
+    margin:0;
+    padding:2px;
+}
+.videoCard figcaption{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:3px;
+   
+}
+.videoCard figCaption .icon{
+    flex:1;
+  
+}
+.icon img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    float:left;
+    shape-outside:circle(10%)
+}
+.videoCard figCaption .desc{
+display:flex;
+flex-flow:column wrap;
+gap:.5em;
+}
+.videoCard figCaption .videoTitle{
+font-weight: bold;
+text-overflow: ellipsis;
+white-space: wrap;
+overflow:hidden;
+max-width:100%;
+}
+.videoCard figCaption .videoChannelName,
+.videoCard figCaption .videoOtherInfo{
+font-size: 15px;
+}
+
+/* Header Styles */
+header{
+    grid-area: header;
+    height: var(--headerHeight);
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5em;
+    padding:.3em .5em;
+    position:fixed;
+    background:white;
+    width:var(--maxWidth)
+
+}
+header .title{
+flex:1;
+}
+header nav{
+    flex:6;
+}
+header nav ul{
+    
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap:.5em;
+}
+
+header ul li:first-child{
+    /* margin:0 auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:.3em;
+    flex:6;
+}
+
+header li:first-child input{
+    width:60%;
+    text-align: start;
+    padding:.5em;
+    color: rgba(90,90,90,.5);
+    font-weight:bold;
+}
+
+header ul li{
+    flex:.5;
+}
+/* Sidebar Styles */
+
+.sidebar{
+    grid-area: sidebar;
+    height: 100%;
+    min-width: 300px;
+    overflow-y:auto;
+    padding:.3em .5em;
+    max-height: calc(100vh - var(--headerHeight) );
+}
+
+.sidebar ul {
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: stretch;
+    gap:.2em;
+}
+
+.sidebar li,
+.sidebar li a > * {
+    padding: 1em;    
+}
+.sidebar li.active,
+.sidebar li:hover{
+    background-color: var(--backgroundColor);
+}
+/* main-content Styles */
+
+.main-content{
+    grid-area: mainContent;
+    height: 100%;
+    background-color: var(--backgroundColor);
+    padding:.8em;
+    max-height: calc(100vh - var(--headerHeight) );
+    overflow-y:auto;
+}
+
+.main-content ul{ 
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
+    gap:1em;
+}
+.main-content ul li{ 
+    flex-basis:23%;
+}
+
+
+@media  screen and (max-width:500px) {
+    
+
+    
+.videoPlayer{
+    grid-template-columns: 1fr;
+    grid-template-areas: 'header''mainContent'; 
+}
+header{
+    width:auto;
+    font-size:1em;
+    position:static;
+}
+
+header .title {
+    text-align: center;
+}
+header .title .title{
+    display:none;
+}
+
+.sidebar{
+position:fixed;
+bottom:0px;
+height:auto;
+width:100%;
+background: white;
+grid-area:none;
+}
+.sidebar ul{
+    flex-flow:column wrap; 
+    overflow:auto;
+    max-height:100px;
+}
+
+.sidebar .title{ 
+    display:none;
+}
+
+
+.main-content ul{ 
+    
+    justify-content: center;
+}
+.main-content ul li{ 
+    flex-basis:100%;
+}
+
+.main-content .desc{
+    flex:3;
+}
+
+}
